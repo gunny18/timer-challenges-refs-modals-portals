@@ -8,7 +8,12 @@
 
 #root {
   height: 100vh;
-  background-color: rgb(0, 140, 255);
+  background: radial-gradient(rgb(12, 54, 12), rgb(4, 27, 4));
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .app {
@@ -17,4 +22,8 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  background-color: rgba(68, 165, 128, 0.658);
+  width: 70%;
+  margin: 3rem;
+  border-radius: 1em;
 }

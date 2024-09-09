@@ -8,6 +8,11 @@ const StyledDiv = styled.div`
   gap: 1em;
 `;
 
+const StyledWelcomeMessage = styled.p`
+  font-size: 2rem;
+  color: beige;
+`;
+
 const UserWelcome = () => {
   const [name, setName] = useState<string | null>(null);
   const nameRef = useRef<HTMLInputElement>(null);
@@ -18,7 +23,9 @@ const UserWelcome = () => {
   };
   return (
     <>
-      <p>Welcome to the timer challege, {name ?? "Unknown User"}</p>
+      <StyledWelcomeMessage>
+        Welcome {name ?? "Unknown User"}
+      </StyledWelcomeMessage>
       <StyledDiv>
         <StyledInput placeholder="Enter name" ref={nameRef} />
         <StyledButton onClick={handleSubmitName}>Submit</StyledButton>

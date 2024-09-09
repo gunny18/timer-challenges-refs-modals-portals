@@ -1,7 +1,7 @@
 import { forwardRef, Ref, useImperativeHandle, useRef } from "react";
 import StyledButton from "./Button";
 import styled from "styled-components";
-// import {styled} from "styled-components";
+import { createPortal } from "react-dom";
 
 interface ResultModalPropsI {
   time: number;
@@ -21,6 +21,10 @@ const StyledDialogBody = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+
+  &::backdrop {
+    background-color: salmon;
+  }
 `;
 
 const StyledDialog = styled.dialog`
@@ -48,7 +52,7 @@ const ResultModal = forwardRef<ModalRef, ResultModalPropsI>(
 
     const score = Math.round((1 - remainingTime / (time * 1000)) * 100);
 
-    return (
+    return createPortal(
       <StyledDialog ref={dialog} onClose={onReset}>
         <StyledDialogBody>
           {userLost && <p>You Lost</p>}
@@ -64,7 +68,8 @@ const ResultModal = forwardRef<ModalRef, ResultModalPropsI>(
             <StyledButton>Close</StyledButton>
           </form>
         </StyledDialogBody>
-      </StyledDialog>
+      </StyledDialog>,
+      document.getElementById("modal") as HTMLElement
     );
   }
 );
